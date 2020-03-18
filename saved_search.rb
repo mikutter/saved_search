@@ -9,6 +9,7 @@ module Plugin::SavedSearch
 end
 
 Plugin.create :saved_search do
+  UserConfig[:retrieve_interval_search] ||= 60
 
   counter = gen_counter
 
