@@ -156,15 +156,7 @@ Plugin.create :saved_search do
         zombie_tab = tab(s[:slug])
         zombie_tab.destroy if zombie_tab end }
   end
-  
+
   Delayer.new{ refresh(true) }
 
 end
-
-
-
-
-
-
-
-
