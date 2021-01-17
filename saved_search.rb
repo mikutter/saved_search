@@ -95,8 +95,8 @@ Plugin.create :saved_search do
         saved_searches = {}
         res.each{ |record|
           saved_searches[record[:id]] = Plugin::SavedSearch::SavedSearch.new(record[:id],
-                                                                             URI.decode(record[:query]),
-                                                                             URI.decode(record[:name]),
+                                                                             CGI.unescape(record[:query]),
+                                                                             CGI.unescape(record[:name]),
                                                                              :"savedsearch_#{record[:id]}",
                                                                              service) }
         new_ids = saved_searches.keys
@@ -148,8 +148,8 @@ Plugin.create :saved_search do
       service = service_by_user_id(s[:service_id])
       if service
         add_tab(Plugin::SavedSearch::SavedSearch.new(s[:id],
-                                                     URI.decode(s[:query]),
-                                                     URI.decode(s[:name]),
+                                                     CGI.unescape(s[:query]),
+                                                     CGI.unescape(s[:name]),
                                                      s[:slug],
                                                      service))
       elsif s[:slug]
